@@ -11,6 +11,6 @@ public class alpha {
     @RequestMapping("/hello")
     @ResponseBody
     public String sayHello() {
-        return "hello Spring Boot.";
+        return "hello Spring Bo  ot.";
     }
 }
