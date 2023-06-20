@@ -3,6 +3,7 @@ package com.yicao.community.controller;
 import com.yicao.community.Service.DiscussPostService;
 import com.yicao.community.Service.UserService;
 import com.yicao.community.entity.DiscussPost;
+import com.yicao.community.entity.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,8 +25,11 @@ public class HomeController {
     private DiscussPostService discussPostService;
 
     @RequestMapping(path = "/index", method = RequestMethod.GET)
-    public String getIndexPage(Model model) {
-        List<DiscussPost> discussPostList = discussPostService.findDiscussPosts(0, 0, 10);
+    public String getIndexPage(Model model, Page page) {
+        page.setRows(discussPostService.findDiscussPostRows(0));
+        page.setPath("/index");
+
+        List<DiscussPost> discussPostList = discussPostService.findDiscussPosts(0, page.getOffset(), page.getLimit());
         List<Map<String, Object>> discussPostAndUser = new ArrayList<>();
         for (DiscussPost discussPost : discussPostList) {
             Map<String, Object> map = new HashMap<>();
