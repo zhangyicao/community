@@ -6,14 +6,13 @@
     <link rel="icon" href="https://static.nowcoder.com/images/logo_87_87.png"/>
     <link rel="stylesheet" th:href="@{/css/stackpath.bootstrapcdn.com_bootstrap_4.3.1_css_bootstrap.min.css}"
           crossorigin="anonymous">
-    <!--th:href：默认到static中去寻找文件-->
     <link rel="stylesheet" th:href="@{/css/global.css}"/>
     <title>牛客网-首页</title>
 </head>
 <body>
 <div class="nk-container">
     <!-- 头部 -->
-    <header class="bg-dark sticky-top">
+    <header class="bg-dark sticky-top" th:fragment="header">
         <div class="container">
             <!-- 导航 -->
             <nav class="navbar navbar-expand-lg navbar-dark">
@@ -28,17 +27,17 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item ml-3 btn-group-vertical">
-                            <a class="nav-link" href="index.html">首页</a>
+                            <a class="nav-link" th:href="@{/index}">首页</a>
                         </li>
                         <li class="nav-item ml-3 btn-group-vertical">
                             <a class="nav-link position-relative" href="site/letter.html">消息<span
                                     class="badge badge-danger">12</span></a>
                         </li>
                         <li class="nav-item ml-3 btn-group-vertical">
-                            <a class="nav-link" href="site/register.html">注册</a>
+                            <a class="nav-link" th:href="@{/register}">注册</a>
                         </li>
                         <li class="nav-item ml-3 btn-group-vertical">
-                            <a class="nav-link" href="site/login.html">登录</a>
+                            <a class="nav-link" th:href="@{/login}">登录</a>
                         </li>
                         <li class="nav-item ml-3 btn-group-vertical dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -159,10 +158,11 @@
                     <li class="page-item">
                         <a class="page-link" th:href="@{${page.path}(current=1)}">首页</a>
                     </li>
-                    <li th:class="|page-item ${page.current==1?'disabled':''}|" >
+                    <li th:class="|page-item ${page.current==1?'disabled':''}|">
                         <a class="page-link" th:href="@{${page.path}(current=${page.current-1})}">上一页</a>
                     </li>
-                    <li th:class="|page-item ${page.current==i?'active':''}|" th:each="i:${#numbers.sequence(page.from,page.to)}">
+                    <li th:class="|page-item ${page.current==i?'active':''}|"
+                        th:each="i:${#numbers.sequence(page.from,page.to)}">
                         <a class="page-link" th:href="@{${page.path}(current=${i})}" th:text="${i}">1</a>
                     </li>
                     <li th:class="|page-item ${page.current==page.total?'disabled':''}|">
@@ -241,11 +241,11 @@
     </footer>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+
+<script th:src="@{/js/code.jquery.com_jquery-3.3.1.min.js}" crossorigin="anonymous"></script>
+<script th:src="@{/js/cdnjs.cloudflare.com_ajax_libs_popper.js_1.14.7_umd_popper.min.js}"
         crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
-<script src="js/global.js"></script>
-<script src="js/index.js"></script>
+<script th:src="@{/js/stackpath.bootstrapcdn.com_bootstrap_4.3.1_js_bootstrap.min.js}" crossorigin="anonymous"></script>
+<script th:src="@{/js/global.js}"></script>
 </body>
 </html>

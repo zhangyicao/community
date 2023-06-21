@@ -15,19 +15,19 @@
     <select id="selectById" resultType="com.yicao.community.entity.User">
         select
         <include refid="selectFields"/>
-        from user where id = #{id}
+        from user where id = #{id} limit 1
     </select>
 
     <select id="selectByName" resultType="com.yicao.community.entity.User">
         select
         <include refid="selectFields"/>
-        from user where username = #{username}
+        from user where username = #{username} limit 1
     </select>
 
     <select id="selectByEmail" resultType="com.yicao.community.entity.User">
         select
         <include refid="selectFields"/>
-        from user where email = #{email}
+        from user where email = #{email} limit 1
     </select>
 
     <insert id="insertUser" parameterType="User" keyProperty="id">
