@@ -47,5 +47,8 @@ mybatis:
 
 # community
 community:
+  login:
+    expiredTimeSecondMax: 604800
+    expiredTimeSecondMin: 3600
   path:
     domain: http://localhost:8080
